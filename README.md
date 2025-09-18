@@ -22,9 +22,9 @@ Doel: kinderen en bezoekers spelenderwijs laten ontdekken welke producten en mat
 ---
 
 ## 📅 Planning (6 weken)
-- Week 1–2: Documentatie, mockups, flowchart, repo opzetten
-- Week 3–4: Eerste prototype (QR → 3D model in browser)
-- Week 5: Uitbreiding met AR-interactie en testen op devices
+- Week 1: Documentatie, mockups, flowchart, repo opzetten
+- Week 2: Eerste prototype (QR → 3D model in browser)
+- Week 3-5: Uitbreiding met AR-interactie en testen op devices
 - Week 6: Bugfixes, documentatie en eindpresentatie
 
 ---
