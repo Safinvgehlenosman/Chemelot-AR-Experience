@@ -1,45 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <title>Chemelot AR Demo</title>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chemelot AR Demo</title>
 
-        model-viewer {
-            width: 100%;
-            height: 80vh;
-        }
+  <!-- Vastgepinde versie + nomodule fallback -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer@3.3.0/dist/model-viewer.min.js"></script>
+  <script nomodule src="https://unpkg.com/@google/model-viewer@3.3.0/dist/model-viewer-legacy.js"></script>
 
-        .info-box {
-            padding: 1rem;
-            background: #f9f9f9;
-            border-top: 2px solid #1d2262;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin-top: 10px;
-            background: #e62a77;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-    </style>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; text-align:center; }
+    model-viewer { width: 100%; height: 80vh; background: #f0f0f3; }
+    .info-box { padding: 1rem; background: #f9f9f9; border-top: 2px solid #1d2262; }
+    button { padding:10px 20px; margin-top:10px; background:#e62a77; color:#fff; border:0; border-radius:8px; cursor:pointer; }
+  </style>
 </head>
 <body>
-    <model-viewer src="./assets/models/football.glb" auto-rotate camera-controls ar></model-viewer>
-    <div class="info-box">
-        <h2>Voetbal</h2>
-        <p>Deze voetbal gebruikt materialen die ontwikkeld worden in de chemische industrie.</p>
-        <button>Meer info</button>
-    </div>
+  <!-- TEST 1: zet tijdelijk dezelfde map als index.html -->
+  <model-viewer id="mv" src="./football.glb"
+    auto-rotate camera-controls ar
+    exposure="1" shadow-intensity="1" crossorigin="anonymous"
+    poster="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'><rect width='100%' height='100%' fill='%23f0f0f3'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-family='Arial' font-size='32'>Laden…</text></svg>">
+  </model-viewer>
+
+  <div class="info-box">
+    <h2>Voetbal</h2>
+    <p>Deze voetbal gebruikt materialen die ontwikkeld worden in de chemische industrie.</p>
+    <button>Meer info</button>
+  </div>
+
+  <script>
+    const mv = document.getElementById('mv');
+    mv.addEventListener('error', (e) => {
+      console.error('model-viewer error:', mv.error);
+      alert('Kon het model niet laden. Check de console (F12) voor details.');
+    });
+    mv.addEventListener('load', () => console.log('Model geladen OK'));
+  </script>
 </body>
 </html>
